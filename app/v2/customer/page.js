@@ -77,7 +77,7 @@ export default function CustomerManagement() {
   async function fetchCustomers() {
     setLoading(true);
     try {
-      const response = await fetch(`/api/customer`);
+      const response = await fetch(`/api/customer/`);
       if (response.ok) {
         const data = await response.json();
         const customersWithId = data.map((customer) => ({
@@ -128,7 +128,7 @@ export default function CustomerManagement() {
       });
     } else {
       // Create new customer
-      fetch(`/api/customer`, {
+      fetch(`/api/customer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

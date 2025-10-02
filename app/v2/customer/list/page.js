@@ -73,7 +73,7 @@ export default function CustomerList() {
   async function fetchCustomers() {
     setLoading(true);
     try {
-      const response = await fetch(`/api/customer`);
+      const response = await fetch(`/api/customer/`);
       if (response.ok) {
         const data = await response.json();
         const customersWithId = data.map((customer) => ({

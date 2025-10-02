@@ -30,7 +30,7 @@ export default function AddCustomer() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(`/api/customer`, {
+      const response = await fetch(`/api/customer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
