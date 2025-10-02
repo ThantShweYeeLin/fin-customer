@@ -24,8 +24,6 @@ export default function EditCustomer() {
   const params = useParams();
   const customerId = params.id;
 
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
-
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   // Fetch customer data

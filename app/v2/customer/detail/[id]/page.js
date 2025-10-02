@@ -37,8 +37,6 @@ export default function CustomerDetail() {
   const params = useParams();
   const customerId = params.id;
 
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
-
   // Fetch customer data
   useEffect(() => {
     if (customerId) {
@@ -48,7 +46,7 @@ export default function CustomerDetail() {
 
   const fetchCustomer = async () => {
     try {
-      const response = await fetch(`/api/customer/${customerId}`);
+      const response = await fetch(`${API_BASE}/customer/${customerId}`);
       if (response.ok) {
         const data = await response.json();
         setCustomer(data);
@@ -75,7 +73,7 @@ export default function CustomerDetail() {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this customer? This action cannot be undone.')) {
       try {
-        const response = await fetch(`/api/customer/${customerId}`, {
+        const response = await fetch(`${API_BASE}/customer/${customerId}`, {
           method: "DELETE",
         });
         
