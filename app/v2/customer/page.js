@@ -19,6 +19,10 @@ export default function CustomerPage() {
   const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
   const router = useRouter();
   const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [editingCustomer, setEditingCustomer] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
   // DataGrid columns configuration
   const columns = [
