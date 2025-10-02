@@ -154,7 +154,7 @@ export default function CustomerPage() {
   // Handle edit action
   const handleEdit = (customer) => {
     setEditingCustomer(customer);
-    setOpen(true);
+    setOpenModal(true);
   };
 
   // Handle delete action
@@ -182,12 +182,12 @@ export default function CustomerPage() {
   // Handle modal open for new customer
   const handleOpen = () => {
     setEditingCustomer(null);
-    setOpen(true);
+    setOpenModal(true);
   };
 
   // Handle modal close
   const handleClose = () => {
-    setOpen(false);
+    setOpenModal(false);
     setEditingCustomer(null);
   };
 
@@ -251,7 +251,7 @@ export default function CustomerPage() {
 
         {/* Modal for Add/Edit Customer */}
         <Modal
-          open={open}
+          open={openModal}
           onClose={handleClose}
           aria-labelledby="customer-modal-title"
           aria-describedby="customer-modal-description"
