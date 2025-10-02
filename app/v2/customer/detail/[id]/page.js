@@ -28,6 +28,7 @@ import InterestsIcon from "@mui/icons-material/Interests";
 import ShareIcon from "@mui/icons-material/Share";
 
 export default function CustomerDetail() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });

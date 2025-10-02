@@ -18,16 +18,7 @@ export default function CustomerListPage() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-import Alert from "@mui/material/Alert";
-import Snackbar from "@mui/material/Snackbar";
-
-export default function CustomerList() {
-  const [customers, setCustomers] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const router = useRouter();
-
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
 
   // DataGrid columns configuration
   const columns = [

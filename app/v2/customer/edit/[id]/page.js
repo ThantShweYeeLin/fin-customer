@@ -37,7 +37,7 @@ export default function EditCustomer() {
 
   const fetchCustomer = async () => {
     try {
-      const response = await fetch(`/api/customer/${customerId}`);
+      const response = await fetch(`${API_BASE}/customer/${customerId}`);
       if (response.ok) {
         const data = await response.json();
         setCustomer(data);
@@ -74,7 +74,7 @@ export default function EditCustomer() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(`/api/customer/${customerId}`, {
+      const response = await fetch(`${API_BASE}/customer/${customerId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
