@@ -13,11 +13,10 @@ import Snackbar from "@mui/material/Snackbar";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function AddCustomer() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
-
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
@@ -30,7 +29,7 @@ export default function AddCustomer() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(`/api/customer/`, {
+      const response = await fetch(`${API_BASE}/customer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -15,15 +15,10 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
-export default function CustomerManagement() {
-  const [customers, setCustomers] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [editingCustomer, setEditingCustomer] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+export default function CustomerPage() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
   const router = useRouter();
-
-  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
+  const [customers, setCustomers] = useState([]);
 
   // DataGrid columns configuration
   const columns = [
@@ -77,7 +72,7 @@ export default function CustomerManagement() {
   async function fetchCustomers() {
     setLoading(true);
     try {
-      const response = await fetch(`/api/customer/`);
+      const response = await fetch(`${API_BASE}/customer/`);
       if (response.ok) {
         const data = await response.json();
         const customersWithId = data.map((customer) => ({
@@ -105,7 +100,7 @@ export default function CustomerManagement() {
   function handleCustomerFormSubmit(data) {
     if (editingCustomer) {
       // Update existing customer
-      fetch(`/api/customer/${editingCustomer._id}`, {
+      fetch(`${API_BASE}/customer/${editingCustomer._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +123,7 @@ export default function CustomerManagement() {
       });
     } else {
       // Create new customer
-      fetch(`/api/customer/`, {
+      fetch(`${API_BASE}/customer/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -162,7 +157,7 @@ export default function CustomerManagement() {
   const handleDelete = async (customerId) => {
     if (window.confirm('Are you sure you want to delete this customer?')) {
       try {
-        const response = await fetch(`/api/customer/${customerId}`, {
+        const response = await fetch(`${API_BASE}/customer/${customerId}`, {
           method: "DELETE",
         });
         

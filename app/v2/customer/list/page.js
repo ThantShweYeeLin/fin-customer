@@ -10,6 +10,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import AddIcon from "@mui/icons-material/Add";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+
+export default function CustomerListPage() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
+  const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
@@ -73,7 +81,7 @@ export default function CustomerList() {
   async function fetchCustomers() {
     setLoading(true);
     try {
-      const response = await fetch(`/api/customer/`);
+      const response = await fetch(`${API_BASE}/customer/`);
       if (response.ok) {
         const data = await response.json();
         const customersWithId = data.map((customer) => ({
@@ -101,7 +109,7 @@ export default function CustomerList() {
   const handleDelete = async (customerId) => {
     if (window.confirm('Are you sure you want to delete this customer?')) {
       try {
-        const response = await fetch(`/api/customer/${customerId}`, {
+        const response = await fetch(`${API_BASE}/customer/${customerId}`, {
           method: "DELETE",
         });
         

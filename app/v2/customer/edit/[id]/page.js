@@ -14,6 +14,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function EditCustomer() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
